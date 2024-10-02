@@ -6,7 +6,7 @@ import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { Search, BarChart, TrendingUp } from 'lucide-react'
-import Image from 'next/image'
+// import Image from 'next/image'
 import Link from 'next/link'
 
 export default function LandingPage() {
@@ -24,7 +24,7 @@ export default function LandingPage() {
       }
     }
     typeText()
-  }, [])
+  }, [controls])
 
   return (
     <div className="min-h-screen bg-gradient-to-b from-gray-100 to-white">
@@ -118,7 +118,7 @@ export default function LandingPage() {
                 </CardHeader>
                 <CardContent>
                   <CardDescription>
-                    Find competitors you didn't even know existed with our advanced search algorithms.
+                    Find competitors you didn&apos;t even know existed with our advanced search algorithms.
                   </CardDescription>
                 </CardContent>
               </Card>
@@ -136,7 +136,7 @@ export default function LandingPage() {
                 </CardHeader>
                 <CardContent>
                   <CardDescription>
-                    Get detailed reports on your competitors' strengths, weaknesses, and strategies.
+                    Get detailed reports on your competitors&apos;' strengths, weaknesses, and strategies.
                   </CardDescription>
                 </CardContent>
               </Card>
@@ -154,7 +154,7 @@ export default function LandingPage() {
                 </CardHeader>
                 <CardContent>
                   <CardDescription>
-                    Stay updated with real-time alerts on your competitors' activities and market changes.
+                    Stay updated with real-time alerts on your competitors&apos;' activities and market changes.
                   </CardDescription>
                 </CardContent>
               </Card>
@@ -216,7 +216,7 @@ export default function LandingPage() {
             </a>
           </div>
           <p className="mt-8 text-center text-base text-gray-400">
-            &copy; 2024 CompetitorFinder. All rights reserved.
+            &copy; 2024 CompetFinder. All rights reserved.
           </p>
         </div>
       </footer>

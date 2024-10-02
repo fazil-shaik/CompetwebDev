@@ -18,6 +18,7 @@ export default function LoginPage() {
     e.preventDefault()
     setError('')
 
+
     const response = await fetch('/api/login', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
