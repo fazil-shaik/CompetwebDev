@@ -118,7 +118,7 @@ export default function LandingPage() {
                 </CardHeader>
                 <CardContent>
                   <CardDescription>
-                    Find competitors you didn&apos;t even know existed with our advanced search algorithms.
+                    Find competitors you didn&apos;'t even know existed with our advanced search algorithms.
                   </CardDescription>
                 </CardContent>
               </Card>
@@ -131,7 +131,7 @@ export default function LandingPage() {
                 <CardHeader>
                   <CardTitle className="flex items-center">
                     <BarChart className="w-5 h-5 mr-2 text-blue-600" />
-                    In-depth Analysis
+                    In depth Analysis
                   </CardTitle>
                 </CardHeader>
                 <CardContent>
@@ -149,7 +149,7 @@ export default function LandingPage() {
                 <CardHeader>
                   <CardTitle className="flex items-center">
                     <TrendingUp className="w-5 h-5 mr-2 text-blue-600" />
-                    Real-time Monitoring
+                    Real time Monitoring
                   </CardTitle>
                 </CardHeader>
                 <CardContent>
@@ -216,7 +216,7 @@ export default function LandingPage() {
             </a>
           </div>
           <p className="mt-8 text-center text-base text-gray-400">
-            &copy; 2024 CompetFinder. All rights reserved.
+            &copy; 2024 CompetFinder All rights reserved.
           </p>
         </div>
       </footer>

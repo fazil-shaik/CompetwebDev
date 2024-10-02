@@ -72,7 +72,7 @@ export default function LoginPage() {
           <Button className="w-full" onClick={handleSubmit}>Log in</Button>
           {error && <p className="mt-2 text-sm text-red-600">{error}</p>}
           <p className="mt-2 text-sm text-center text-gray-600">
-            Don't have an account?{' '}
+            Don&apos;'t have an account?{' '}
             <Link href="/signup" className="text-blue-600 hover:underline">
               Sign up
             </Link>
