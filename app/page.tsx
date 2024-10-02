@@ -118,7 +118,7 @@ export default function LandingPage() {
                 </CardHeader>
                 <CardContent>
                   <CardDescription>
-                    Find competitors you didn&apos;'t even know existed with our advanced search algorithms.
+                    Find competitors you didn&apos;t even know existed with our advanced search algorithms.
                   </CardDescription>
                 </CardContent>
               </Card>
@@ -136,7 +136,7 @@ export default function LandingPage() {
                 </CardHeader>
                 <CardContent>
                   <CardDescription>
-                    Get detailed reports on your competitors&apos;' strengths, weaknesses, and strategies.
+                    Get detailed reports on your competitors&apos; strengths, weaknesses, and strategies.
                   </CardDescription>
                 </CardContent>
               </Card>
@@ -154,7 +154,7 @@ export default function LandingPage() {
                 </CardHeader>
                 <CardContent>
                   <CardDescription>
-                    Stay updated with real-time alerts on your competitors&apos;' activities and market changes.
+                    Stay updated with real-time alerts on your competitors&apos; activities and market changes.
                   </CardDescription>
                 </CardContent>
               </Card>
