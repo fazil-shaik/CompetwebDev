@@ -37,7 +37,7 @@ export async function POST(request: Request) {
     return NextResponse.json({ message: 'User created successfully', userId: result.insertedId }, { status: 201 })
   } catch (error) {
     console.error('Signup error:', error)
-    return NextResponse.json({ message: 'An error occurred during signup', error: error.message }, { status: 500 })
+    return NextResponse.json({ message: 'An error occurred during signup', error: (error as Error).message }, { status: 500 })
   } finally {
     if (client) {
       await client.close()
