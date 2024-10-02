@@ -14,11 +14,9 @@ export default function SignupPage() {
   const [name, setName] = useState('')
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
-  const [error, setError] = useState<string | null>(null)
+  const [error, setError] = useState('')
   const [isLoading, setIsLoading] = useState(false)
   const router = useRouter()
-
-
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
@@ -89,19 +87,20 @@ export default function SignupPage() {
                 />
               </div>
             </div>
+            {/* Display the error if it exists */}
+            {error && (
+              <Alert variant="destructive" className="mt-4">
+                <AlertCircle className="h-4 w-4" />
+                <AlertTitle>Error</AlertTitle>
+                <AlertDescription>{error}</AlertDescription>
+              </Alert>
+            )}
+            <Button className="w-full mt-4" type="submit" disabled={isLoading}>
+              {isLoading ? 'Signing up...' : 'Sign up'}
+            </Button>
           </form>
         </CardContent>
         <CardFooter className="flex flex-col">
-          <Button className="w-full" onClick={handleSubmit} disabled={isLoading}>
-            {isLoading ? 'Signing up...' : 'Sign up'}
-          </Button>
-          {error && (
-            <Alert variant="destructive" className="mt-4">
-              <AlertCircle className="h-4 w-4" />
-              <AlertTitle>Error</AlertTitle>
-              <AlertDescription>{error}</AlertDescription>
-            </Alert>
-          )}
           <p className="mt-4 text-sm text-center text-gray-600">
             Already have an account?{' '}
             <Link href="/login" className="text-blue-600 hover:underline">
