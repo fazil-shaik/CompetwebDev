@@ -38,7 +38,7 @@ export default function SignupPage() {
         setError(data.message || 'An error occurred during signup')
       }
     } catch (error) {
-      setError('An error occurred. Please try again.')
+      setError('An error occurred. Please try again.'+error)
     } finally {
       setIsLoading(false)
     }

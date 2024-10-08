@@ -1,52 +1,40 @@
 import { NextResponse } from 'next/server'
-import bcrypt from 'bcryptjs'
+import { cookies } from 'next/headers'
 import jwt from 'jsonwebtoken'
 import clientPromise from '@/lib/mongodb'
-import { User } from '@/models/User'
+import { ObjectId } from 'mongodb'
 
-export async function POST(request: Request) {
+export async function GET() {
+  const cookieStore = cookies()
+  const token = cookieStore.get('token')
+
+  if (!token) {
+    return NextResponse.json({ message: 'Not authenticated' }, { status: 401 })
+  }
+
   try {
-    const { email, password } = await request.json()
-
-    if (!email || !password) {
-      return NextResponse.json({ message: 'Missing required fields' }, { status: 400 })
-    }
-
+    const decoded = jwt.verify(token.value, process.env.JWT_SECRET || 'fallback_secret') as { userId: string, email: string }
+    
     const client = await clientPromise
     const db = client.db('competitor-finder')
+    const user = await db.collection('users').findOne({ _id: new ObjectId(decoded.userId) })
 
-    // Find user
-    const user = await db.collection<User>('users').findOne({ email })
     if (!user) {
-      return NextResponse.json({ message: 'Invalid email or password' }, { status: 400 })
+      return NextResponse.json({ message: 'User not found' }, { status: 404 })
     }
 
-    // Check password
-    const isPasswordValid = await bcrypt.compare(password, user.password)
-    if (!isPasswordValid) {
-      return NextResponse.json({ message: 'Invalid email or password' }, { status: 400 })
-    }
+    // Don't send the password hash to the client
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
+    const { password, ...userWithoutPassword } = user
 
-    // Generate JWT token
-    const token = jwt.sign(
-      { userId: user._id, email: user.email },
-      process.env.JWT_SECRET || 'fallback_secret',
-      { expiresIn: '1h' }
-    )
-
-    // Set JWT token in a cookie
-    const response = NextResponse.json({ message: 'Login successful' }, { status: 200 })
-    response.cookies.set('token', token, {
-      httpOnly: true,
-      secure: process.env.NODE_ENV === 'production',
-      sameSite: 'strict',
-      maxAge: 3600, // 1 hour
-      path: '/',
+    return NextResponse.json({
+      _id: userWithoutPassword._id.toString(),
+      name: userWithoutPassword.name,
+      email: userWithoutPassword.email,
+      createdAt: userWithoutPassword.createdAt.toISOString()
     })
-
-    return response
   } catch (error) {
-    console.error('Login error:', error)
-    return NextResponse.json({ message: 'An error occurred during login' }, { status: 500 })
+    console.error('Error fetching user:', error)
+    return NextResponse.json({ message: 'Error fetching user data' }, { status: 500 })
   }
 }

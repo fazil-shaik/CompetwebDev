@@ -18,7 +18,6 @@ export default function LoginPage() {
     e.preventDefault()
     setError('')
 
-
     const response = await fetch('/api/login', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
@@ -26,7 +25,7 @@ export default function LoginPage() {
     })
 
     if (response.ok) {
-      router.push('/')
+      router.push('/dashboard')  // Redirect to dashboard after successful login
     } else {
       const data = await response.json()
       setError(data.message || 'Invalid email or password')

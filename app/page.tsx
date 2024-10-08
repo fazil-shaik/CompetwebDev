@@ -24,7 +24,7 @@ export default function LandingPage() {
       }
     }
     typeText()
-  }, [controls])
+  }, [])
 
   return (
     <div className="min-h-screen bg-gradient-to-b from-gray-100 to-white">
@@ -33,7 +33,7 @@ export default function LandingPage() {
           <div className="flex justify-between h-16">
             <div className="flex">
               <div className="flex-shrink-0 flex items-center">
-                <span className="text-2xl font-bold text-blue-600">CompetFinder</span>
+                <span className="text-2xl font-bold text-blue-600">CompetitorFinder</span>
               </div>
             </div>
             <div className="hidden sm:ml-6 sm:flex sm:items-center">
@@ -131,12 +131,12 @@ export default function LandingPage() {
                 <CardHeader>
                   <CardTitle className="flex items-center">
                     <BarChart className="w-5 h-5 mr-2 text-blue-600" />
-                    In depth Analysis
+                    In-depth Analysis
                   </CardTitle>
                 </CardHeader>
                 <CardContent>
                   <CardDescription>
-                    Get detailed reports on your competitors&apos; strengths, weaknesses, and strategies.
+                    Get detailed reports on your competitors strengths, weaknesses, and strategies.
                   </CardDescription>
                 </CardContent>
               </Card>
@@ -149,12 +149,12 @@ export default function LandingPage() {
                 <CardHeader>
                   <CardTitle className="flex items-center">
                     <TrendingUp className="w-5 h-5 mr-2 text-blue-600" />
-                    Real time Monitoring
+                    Real-time Monitoring
                   </CardTitle>
                 </CardHeader>
                 <CardContent>
                   <CardDescription>
-                    Stay updated with real-time alerts on your competitors&apos; activities and market changes.
+                    Stay updated with real-time alerts on your competitors activities and market changes.
                   </CardDescription>
                 </CardContent>
               </Card>
@@ -216,7 +216,7 @@ export default function LandingPage() {
             </a>
           </div>
           <p className="mt-8 text-center text-base text-gray-400">
-            &copy; 2024 CompetFinder All rights reserved.
+            &copy; 2024 CompetitorFinder. All rights reserved.
           </p>
         </div>
       </footer>
