@@ -48,7 +48,8 @@ export async function GET(request: Request) {
       { $set: { slackAccessToken: data.access_token } }
     )
 
-    return NextResponse.redirect(`${process.env.NEXT_PUBLIC_APP_URL}/dashboard?slackConnected=true`)
+    // Redirect to the specific Slack workspace after successful authentication
+    return NextResponse.redirect('https://datateam-lue4672.slack.com/archives/C07RKRN7VS7', { status: 302 })
   } catch (error: unknown) {
     console.error('Error exchanging code for token:', error)
     
