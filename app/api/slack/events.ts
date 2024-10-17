@@ -199,53 +199,53 @@
 //     })
 //   }
 // }
-import { NextApiRequest, NextApiResponse } from 'next'
-import { App, ExpressReceiver } from '@slack/bolt'
+// import { NextApiRequest, NextApiResponse } from 'next'
+// import { App, ExpressReceiver } from '@slack/bolt'
 
-// Initialize the ExpressReceiver
-const receiver = new ExpressReceiver({
-  signingSecret: process.env.SLACK_SIGNING_SECRET!,
-  processBeforeResponse: true,
-})
+// // Initialize the ExpressReceiver
+// const receiver = new ExpressReceiver({
+//   signingSecret: process.env.SLACK_SIGNING_SECRET!,
+//   processBeforeResponse: true,
+// })
 
-// Initialize the Slack app
-const app = new App({
-  token: process.env.SLACK_BOT_TOKEN,
-  receiver,
-})
+// // Initialize the Slack app
+// const app = new App({
+//   token: process.env.SLACK_BOT_TOKEN,
+//   receiver,
+// })
 
-// Handle the /update command
-app.command('/update', async ({ command, ack, respond }) => {
-  // Acknowledge the command request
-  await ack()
+// // Handle the /update command
+// app.command('/update', async ({ command, ack, respond }) => {
+//   // Acknowledge the command request
+//   await ack()
 
-  try {
-    // Respond to the slash command
-    await respond({
-      response_type: 'in_channel', // This makes the response visible to all users in the channel
-      text: 'Welcome to the updates channel'
-    })
-  } catch (error) {
-    console.error('Error responding to /update command:', error)
-    await respond({
-      response_type: 'ephemeral', // This makes the response only visible to the user who issued the command
-      text: 'Sorry, there was an error processing your command. Please try again later.'
-    })
-  }
-})
+//   try {
+//     // Respond to the slash command
+//     await respond({
+//       response_type: 'in_channel', // This makes the response visible to all users in the channel
+//       text: 'Welcome to the updates channel'
+//     })
+//   } catch (error) {
+//     console.error('Error responding to /update command:', error)
+//     await respond({
+//       response_type: 'ephemeral', // This makes the response only visible to the user who issued the command
+//       text: 'Sorry, there was an error processing your command. Please try again later.'
+//     })
+//   }
+// })
 
-// Handle Slack events
-export default async function handler(req: NextApiRequest, res: NextApiResponse) {
-  if (req.method === 'POST') {
-    try {
-      // Pass the request to the receiver
-      await receiver.app(req, res)
-    } catch (error) {
-      console.error('Error processing Slack event:', error)
-      res.status(500).json({ error: 'Internal server error' })
-    }
-  } else {
-    res.setHeader('Allow', ['POST'])
-    res.status(405).end(`Method ${req.method} Not Allowed`)
-  }
-}
+// // Handle Slack events
+// export default async function handler(req: NextApiRequest, res: NextApiResponse) {
+//   if (req.method === 'POST') {
+//     try {
+//       // Pass the request to the receiver
+//       await receiver.app(req, res)
+//     } catch (error) {
+//       console.error('Error processing Slack event:', error)
+//       res.status(500).json({ error: 'Internal server error' })
+//     }
+//   } else {
+//     res.setHeader('Allow', ['POST'])
+//     res.status(405).end(`Method ${req.method} Not Allowed`)
+//   }
+// }
