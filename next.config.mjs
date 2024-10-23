@@ -26,17 +26,6 @@ const nextConfig = {
   images: {
     domains: ['media.giphy.com'],
   },
-  experimental: {
-    appDir: true,
-  },
-  async rewrites() {
-    return [
-      {
-        source: '/reset-password',
-        destination: '/reset-password',
-      },
-    ]
-  },
 }
 
 export default nextConfig
