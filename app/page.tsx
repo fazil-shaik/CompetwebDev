@@ -229,6 +229,7 @@
 'use client'
 
 import { useState, useEffect } from 'react'
+import { Analytics } from "@vercel/analytics/react"
 import { motion, useAnimation, useScroll, useTransform } from 'framer-motion'
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
@@ -356,7 +357,7 @@ export default function LandingPage() {
             </div>
           </motion.div>
         </section>
-
+        <Analytics/>
         <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
           <h2 className="text-3xl font-extrabold text-center mb-12">
             Why Choose CompetitorFinder?
