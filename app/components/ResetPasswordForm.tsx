@@ -5,9 +5,10 @@ import { useRouter, useSearchParams } from 'next/navigation'
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
+import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card"
 import Link from 'next/link'
 
-export function ResetPasswordForm() {
+export default function ResetPasswordForm() {
   const [password, setPassword] = useState('')
   const [confirmPassword, setConfirmPassword] = useState('')
   const [message, setMessage] = useState('')
@@ -51,53 +52,60 @@ export function ResetPasswordForm() {
         setError(data.message || 'An error occurred. Please try again.')
       }
     } catch (err) {
-      setError('An error occurred. Please try again.'+err)
+      setError('An error occurred. Please try again.')
+      console.error('Reset password error:', err)
     } finally {
       setIsLoading(false)
     }
   }
 
   return (
-    <>
-      <form onSubmit={handleSubmit}>
-        <div className="grid w-full items-center gap-4">
-          <div className="flex flex-col space-y-1.5">
-            <Label htmlFor="password">New Password</Label>
-            <Input 
-              id="password" 
-              type="password" 
-              placeholder="Enter your new password"
-              value={password}
-              onChange={(e) => setPassword(e.target.value)}
-              required
-            />
+    <Card className="w-[350px]">
+      <CardHeader>
+        <CardTitle>Reset Password</CardTitle>
+        <CardDescription>Enter your new password</CardDescription>
+      </CardHeader>
+      <CardContent>
+        <form onSubmit={handleSubmit}>
+          <div className="grid w-full items-center gap-4">
+            <div className="flex flex-col space-y-1.5">
+              <Label htmlFor="password">New Password</Label>
+              <Input 
+                id="password" 
+                type="password" 
+                placeholder="Enter your new password"
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
+                required
+              />
+            </div>
+            <div className="flex flex-col space-y-1.5">
+              <Label htmlFor="confirmPassword">Confirm New Password</Label>
+              <Input 
+                id="confirmPassword" 
+                type="password" 
+                placeholder="Confirm your new password"
+                value={confirmPassword}
+                onChange={(e) => setConfirmPassword(e.target.value)}
+                required
+              />
+            </div>
           </div>
-          <div className="flex flex-col space-y-1.5">
-            <Label htmlFor="confirmPassword">Confirm New Password</Label>
-            <Input 
-              id="confirmPassword" 
-              type="password" 
-              placeholder="Confirm your new password"
-              value={confirmPassword}
-              onChange={(e) => setConfirmPassword(e.target.value)}
-              required
-            />
-          </div>
-        </div>
-        <div className="mt-4">
-          <Button className="w-full" type="submit" disabled={isLoading || !token}>
-            {isLoading ? 'Resetting...' : 'Reset Password'}
-          </Button>
-        </div>
-      </form>
-      {message && <p className="mt-2 text-sm text-green-600">{message}</p>}
-      {error && <p className="mt-2 text-sm text-red-600">{error}</p>}
-      <p className="mt-4 text-sm text-center text-gray-600">
-        Remember your password?{' '}
-        <Link href="/login" className="text-blue-600 hover:underline">
-          Log in
-        </Link>
-      </p>
-    </>
+        </form>
+      </CardContent>
+      <CardFooter className="flex flex-col">
+        <Button className="w-full" onClick={handleSubmit} disabled={isLoading || !token}>
+          {isLoading ? 'Resetting...' : 'Reset Password'}
+        </Button>
+        {message && <p className="mt-2 text-sm text-green-600">{message}</p>}
+        {error && <p className="mt-2 text-sm text-red-600">{error}</p>}
+        <p className="mt-4 text-sm text-center text-gray-600">
+          Remember your password?{' '}
+          <Link href="/login" className="text-blue-600 hover:underline">
+            Log in
+          </Link>
+        </p>
+      </CardFooter>
+    </Card>
   )
 }
