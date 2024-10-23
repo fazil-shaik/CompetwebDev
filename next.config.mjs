@@ -16,16 +16,35 @@
   
 //   export default nextConfig
 
+// /** @type {import('next').NextConfig} */
+// const nextConfig = {
+//   reactStrictMode: true,
+//   api: {
+//     bodyParser: false,
+//     externalResolver: true,
+//   },
+// }
+
+// export default nextConfig
+
+
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   reactStrictMode: true,
-  api: {
-    bodyParser: false,
-    externalResolver: true,
+  experimental: {
+    appDir: true,
+  },
+  async rewrites() {
+    return [
+      {
+        source: '/reset-password',
+        destination: '/reset-password',
+      },
+    ]
   },
   images: {
     domains: ['media.giphy.com'],
-  },
+  }
 }
 
 export default nextConfig
