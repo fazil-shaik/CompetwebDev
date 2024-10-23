@@ -1,5 +1,5 @@
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
-import { ResetPasswordForm } from '../reset-password-form/page'
+import { ResetPasswordForm } from '../components/ResetPasswordForm'
 
 export default function ResetPasswordPage() {
   return (
