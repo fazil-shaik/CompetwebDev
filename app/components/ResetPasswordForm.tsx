@@ -84,20 +84,20 @@ export function ResetPasswordForm() {
             />
           </div>
         </div>
+        <div className="mt-4">
+          <Button className="w-full" type="submit" disabled={isLoading || !token}>
+            {isLoading ? 'Resetting...' : 'Reset Password'}
+          </Button>
+        </div>
       </form>
-      <div className="mt-4">
-        <Button className="w-full" onClick={handleSubmit} disabled={isLoading || !token}>
-          {isLoading ? 'Resetting...' : 'Reset Password'}
-        </Button>
-        {message && <p className="mt-2 text-sm text-green-600">{message}</p>}
-        {error && <p className="mt-2 text-sm text-red-600">{error}</p>}
-        <p className="mt-4 text-sm text-center text-gray-600">
-          Remember your password?{' '}
-          <Link href="/login" className="text-blue-600 hover:underline">
-            Log in
-          </Link>
-        </p>
-      </div>
+      {message && <p className="mt-2 text-sm text-green-600">{message}</p>}
+      {error && <p className="mt-2 text-sm text-red-600">{error}</p>}
+      <p className="mt-4 text-sm text-center text-gray-600">
+        Remember your password?{' '}
+        <Link href="/login" className="text-blue-600 hover:underline">
+          Log in
+        </Link>
+      </p>
     </>
   )
 }
