@@ -79,6 +79,12 @@ export default function LoginPage() {
           <Link href="/forgot-password" className="text-blue-600 hover:underline">
               forget password
             </Link>
+            <div className='text-center bg-black
+            pl-2 pr-2 pt-2 pb-2 rounded-sm font-white mt-5'>
+            <Link href="/admin/login" className="text-white">
+              Login as admin
+            </Link>
+            </div>
         </CardFooter>
       </Card>
     </div>
